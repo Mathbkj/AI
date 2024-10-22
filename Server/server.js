@@ -10,7 +10,7 @@ app.use(cors());
 let counter = 0;
 console.log(counter);
 
-app.post("/ai", async (req, res, next) => {
+app.post("/ai", async (req, res) => {
   const { input } = req.body;
   console.log(input);
   try {
@@ -49,24 +49,4 @@ app.post("/ai", async (req, res, next) => {
     console.log(`POST to ${req.url} DONE. LOG NUM#${counter}`);
   }
 });
-/*Test
-  The following code is for testing purposes only.
-*/
-app.get("/test", async (req, res, next) => {
-  try {
-    const getter = await axios.get(
-      `https://jsonplaceholder.typicode.com/todos/1`,
-      {
-        responseType: "json",
-      }
-    );
-    const data = await getter.data;
-    Object.values(data).forEach((value) => {
-      console.log(value);
-    });
-  } catch (err) {
-    console.log(err);
-  }
-});
-
 app.listen(PORT, () => console.log("Server listening on port 3000"));
