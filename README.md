@@ -7,8 +7,7 @@ Demo application using OLlama API, developed by Facebook, in order to build a si
 <h2>
   
   - OLlama
-  <br/>
-  
+    <br/>
   - Node.js
     <br/>
   - Postman or curl(Up to you 😁)
