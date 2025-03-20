@@ -1,4 +1,4 @@
-🧠 OLlama API Chatbot
+<h1>🧠 OLlama API Chatbot</h1>
 
 A demo application using the OLlama API, developed by Facebook, to build a simple chatbot interface.
 
