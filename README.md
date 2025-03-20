@@ -1,4 +1,4 @@
-# 🧠 OLlama API Chatbot
+# 🔒 RandomI Chatbot
 
 A demo application using the **OLlama API**, developed by **Facebook**, to build a simple chatbot interface.
 
@@ -61,6 +61,12 @@ curl http://localhost:11434/api/generate -d '{
   npm install
   npm run dev
   ```
+
+## 🎨 Customizing the AI for Your Frontend
+If you want to use the AI inside your own frontend, you should:
+- Extract the **Form** component from the client-side (`ai-project`).
+- Restyle it according to your needs.
+- Keep the **Server** folder unchanged to maintain backend functionality.
 
 ## 🎥 Video Demonstration
 [Watch the demo here!](https://github.com/user-attachments/assets/52c815d2-d427-4b0f-bc0b-07fb64dc4ec3)
