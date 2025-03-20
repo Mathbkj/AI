@@ -8,36 +8,56 @@ export const RedirectButton: FC<MotionButtonProps> = ({
   src,
   hasIcon,
   onClick,
+  className,
 }) => {
-  const [isHover,setHovered] = useState<boolean>(false);
+  const [isHover, setHovered] = useState<boolean>(false);
   const time = useTime();
-  const rotate = useTransform(time,[0,3000],[0,360],{clamp:false})
+  const rotate = useTransform(time, [0, 3000], [0, 360], { clamp: false });
   const rotatingBg = useTransform(rotate, (r) => {
-			return `conic-gradient(from ${r}deg,#f0f0f0,#000)`;
-		})
-    const handleHover=()=>setHovered(!isHover);
+    return `conic-gradient(from ${r}deg,#f0f0f0,#000)`;
+  });
+  const handleHover = () => setHovered(!isHover);
   return (
     <div className="relative my-3">
-    <div onMouseEnter={handleHover} onMouseLeave={handleHover} className={`flex relative z-10 ${isHover ? "bg-white":"bg-neutral-900"} transition-all rounded-md self-center p-2 m-1 gap-4 cursor-pointer max-w-1/6 justify-center inconsolata items-center`}>
-      <motion.button onClick={onClick} className="cursor-pointer" type="button">
-        <span className={`${isHover ? "text-black" : "text-white"} transition-all tracking-wide font-light h-full w-full block relative`}>
-        {text}
-        </span>        
-      </motion.button>
-      {/*hasIcon && src === "Github" ? (
-        <BsGithub color={isHover ? "black":"white"} className="transition-all" />
-      ) : hasIcon && src === "Facebook" ? (
-        <BsFacebook />
-      ) : hasIcon && src === "Instagram" ? (
-        <BsInstagram />
-      ) : (
-        ""
-      )*/}
-      {hasIcon && src==="Github" ? (<Icon size={15} color={isHover ? "black" : "white"} src="Github"/>):""}
+      <div
+        onMouseEnter={handleHover}
+        onMouseLeave={handleHover}
+        className={`flex flex-nowrap mx-auto relative z-10 ${
+          isHover ? "bg-black" : "bg-white"
+        } transition-all rounded-md flex px-3 py-2 gap-2 cursor-pointer justify-center dm-sans items-center ${className}`}
+      >
+        <motion.button
+          onClick={onClick}
+          className="cursor-pointer"
+          type="button"
+        >
+          <span
+            className={`${
+              isHover ? "text-white" : "text-black"
+            } transition-all tracking-wide font-light flex justify-center items-center relative`}
+          >
+            {text}
+          </span>
+        </motion.button>
+        {hasIcon && src === "Learn" ? (
+          <div>
+            <Icon size={15} color={isHover ? "white" : "black"} src="Learn" />
+          </div>
+        ) : (
+          ""
+        )}
+        {hasIcon && src === "Github" ? (
+          <div>
+            <Icon size={15} color={isHover ? "white" : "black"} src="Github" />
+          </div>
+        ) : (
+          ""
+        )}
+      </div>
+      <motion.div
+        style={{ background: rotatingBg, filter: "blur(20px)" }}
+        className={`absolute mx-auto inset-x-1 -inset-y-px p-2 rounded-md ${className}`}
+      />
     </div>
-      <motion.div style={{background:rotatingBg,filter:"blur(2px)"}} className="absolute inset-x-1 -inset-y-[.4px] p-2 rounded-md max-w-1/6"/>
-    </div>
-    
   );
 };
-

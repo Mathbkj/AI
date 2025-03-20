@@ -3,7 +3,6 @@ import type { ChangeEvent, FC, FormEvent } from "react";
 import { useState } from "react";
 import { AxiosError } from "axios";
 import { SubmitButton } from "./SubmitButton";
-import { motion } from "motion/react";
 import { AnimatedText } from "./motion/AnimatedText";
 
 
@@ -15,7 +14,7 @@ export const Form: FC = () => {
   };
   const [content, setContent] = useState<string>("");
 
-  const handleSubmit = async (ev?: FormEvent<HTMLFormElement>):Promise<boolean|undefined> => {
+  const handleSubmit = async (ev?: FormEvent<HTMLFormElement>) => {
     try {
       if (content) setContent("");
       ev?.preventDefault();
@@ -43,15 +42,12 @@ export const Form: FC = () => {
             const newPrev = prev + chunk;
             return newPrev;
           });
-          return true;
         }
       }
     } catch (err) {
       alert('You must start the server from the Server folder before running this. Remember to also have Llama3 running.')
       if (err instanceof AxiosError) {
-       
         console.log(`Axios Error:${err.message}`);
-        return false;
       }
     } finally {
       console.log("Form submission completed");
@@ -63,18 +59,18 @@ export const Form: FC = () => {
       <header className="flex flex-col m-2 gap-4">
         <AnimatedText
           text="Test The API"
-          className="md:text-4xl mt-2 text-white font-bold pb-2 text-start "
+          className="md:text-4xl mt-2 text-white font-bold pb-2 text-start"
         />
         <AnimatedText
           text="You might test the app right here"
           className="font-normal md:text-2xl text-white/40 inconsolata text-start antialised"
         />
       </header>
-      <motion.div className="bg-neutral-900 overflow-hidden text-wrap rounded-xl max-w-[500px] h-[300px] p-2 text-center">
-        <motion.h1 className="md:text-xl mt-8 text-transparent bg-gradient-to-r font-bold from-white via-white/50 to-white/0 bg-clip-text break-words">
-          {content ? content : "Your Response Will Be Here"}
-        </motion.h1>
-      </motion.div>
+      <div className="bg-neutral-900 overflow-x-hidden text-wrap rounded-xl max-w-[500px] h-[300px] p-8 pt-0 text-center">
+        <h1 className="md:text-xl mt-8 font-bold text-white break-words">
+          {content ? content : "Response Here"}
+        </h1>
+      </div>
       <br />
       <form
         className="w-full flex shadow rounded-xl shadow-neutral-900 bg-neutral-900 overflow-hidden"

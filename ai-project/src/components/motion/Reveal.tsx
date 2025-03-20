@@ -1,34 +1,56 @@
 import type { FC, PropsWithChildren } from "react";
 import { useRef } from "react";
-import { motion, useMotionValueEvent, useScroll, useTransform } from "motion/react";
+import {
+  motion,
+  useMotionValueEvent,
+  useScroll,
+  useSpring,
+  useTransform,
+  type CustomValueType,
+} from "motion/react";
 
 type Props = PropsWithChildren & {
-    x: number;
-    y: number;
-}
+  x?: string | number | CustomValueType;
+  y?: string | number | CustomValueType;
+  className?: string;
+};
 
-export const Reveal: FC<Props> = ({ children, x, y}) => {
-    const ref = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: ref,
-    });
-    const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
-    const opacity = useTransform(scrollYProgress,[1,0],[3,0])
-    const offsetX = useTransform(scale, [1, 1.15], [x, 200])
-    const offsetY = useTransform(scale, [1,1.15], [y, 100])
+export const Reveal: FC<Props> = ({ children, x, y, className }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset:["start start","center start"]
+  });
+  useMotionValueEvent(scrollYProgress,"change",(curr)=>{
+    console.log(curr)
+  })
+  const scale = useTransform(scrollYProgress, [0,0.5, 1], [1,.5, 0.05]);
+  const opacity = useTransform(scrollYProgress, [0,1], [1,0]);
 
-    useMotionValueEvent(scrollYProgress,"change",(latest)=>{
-        console.log(`Page Scroll ${latest}`);
-    })
-       const transition = {
-        duration: 2,
-        ease:"easeInOut",
-        stiffness: 100,
-        damping: 30,
-        restDelta: .001,
-    }
-    return <motion.div initial={{x,y}} ref={ref} style={{position:"relative",marginTop:"5%",marginBottom:"10%",scale,x:offsetX,y:offsetY,opacity}} transition={transition}>
-        {children}
+  const springScale = useSpring(scale,{
+    stiffness:120,
+    damping:20
+  })
+  const springOpacity = useSpring(opacity,{
+    stiffness:120,
+    damping:20,
+  })
+
+  return (
+    <motion.div
+      initial={{x,y}}
+      ref={ref}
+      style={{
+        position: "relative",
+        marginTop: "5%",
+        marginBottom: "10%",
+        scale:springScale,
+        opacity:springOpacity,
+      }}
+      className={className}
+      transition={{duration:.1}}
+    >
+      {children}
     </motion.div>
-        
-}
+  );
+};

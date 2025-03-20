@@ -1,8 +1,8 @@
 
 export type CardProps = {
-    hasImage?:boolean,
-    span?:number,
-    src?:string,
-    size?:number,
-    contentProps: { title: string; content: string; btnText?:string}
+    hasPreview?:boolean;
+    preview?:"Setup" | "Idea" | "Test" | "DontWorry" | "DataDeliver" | "Download" | "SetupOllama" | "Startup";
+    className?:string;
+    size?:number;
+    contentProps: { title: string; content: string; btnText?:string};
 }
