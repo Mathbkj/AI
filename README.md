@@ -69,7 +69,7 @@ If you want to use the AI inside your own frontend, you should:
 - Keep the **Server** folder unchanged to maintain backend functionality.
 
 ## 🎥 Video Demonstration
-[Watch the demo here!](https://github.com/user-attachments/assets/f28c8184-0e17-492a-b953-6edd48b9e2df)
+[Watch the demo here!](https://github.com/user-attachments/assets/323ca8f3-9346-4979-b4f0-04a2ac54b467)
 
 Enjoy the project! 😁
 

@@ -8,7 +8,7 @@ import { RedirectButton } from "./components/motion/RedirectButton";
 import { Line } from "./components/Line";
 import { Icon } from "./components/Icon";
 import { BsFillShieldLockFill } from "react-icons/bs";
-import { SpotlightPreview} from "./components/SpotlightPreview";
+import { SpotlightPreview } from "./components/SpotlightPreview";
 import { BiMenu } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import { TextParallax } from "./components/motion/TextParallax";
@@ -52,9 +52,10 @@ function App() {
           {/* Navigation Links */}
           <motion.div className="flex justify-center items-center gap-4 md:gap-6 mt-0 me-10">
             <span className="dm-sans hidden md:flex cursor-pointer hover:text-gray-300">
-              Blog
+              Blog(IN-DEV)
             </span>
             <RedirectButton
+            href="https://github.com/Mathbkj/AI"
               className="hidden md:flex"
               hasIcon={true}
               src="Github"
@@ -79,6 +80,7 @@ function App() {
 
             <li className="list-none w-full text-center text-white hover:text-white/30 transition-all">
               <RedirectButton
+              href="https://github.com/Mathbkj/AI"
                 className="text-white max-w-1/6"
                 hasIcon={true}
                 src="Github"
@@ -106,11 +108,21 @@ function App() {
         </header>
 
         <div className="bg-white px-12">
-            <TextParallax imgUrl={futuristic} subheading="Feel The Wind Blowing" heading="Code With RandomI" title="About The Project" explanation="RandomI is a solo AI-related project I've developed for you to freely implement in your projects. This project has been developed using Express.js integrated with Ollama API and it's easy to setup."/>            
-            <TextParallax imgUrl={interconnected} subheading="Start using RandomI" heading="Power up your projects🚀" title="Folder Structure" explanation="There will be two folders in Github, one for the Server and another for the Client. The core of the application is the Server, made with Express, a Node framework, as said before. The client is made with React.js and performatically processes the response received from the backend"/>            
+          <TextParallax
+            imgUrl={futuristic}
+            subheading="Feel The Wind Blowing"
+            heading="Code With RandomI"
+            title="About The Project"
+            explanation="RandomI is a solo AI-related project I've developed for you to freely implement in your projects. This project has been developed using Express.js integrated with Ollama API and it's easy to setup."
+          />
+          <TextParallax
+            imgUrl={interconnected}
+            subheading="Start using RandomI"
+            heading="Power up your projects🚀"
+            title="Folder Structure"
+            explanation="There will be two folders in Github, one for the Server and another for the Client. The core of the application is the Server, made with Express, a Node framework, as said before. The client is made with React.js and performatically processes the response received from the backend"
+          />
         </div>
-      
-            
       </div>
 
       {/*Main Component*/}
@@ -126,10 +138,9 @@ function App() {
             empowering, and anything but boring. Our intuitive code brings
             clarity to your project, simplifies your code implementation, and
             puts the power of advanced QA management right at your fingertips.
-            <span className="text-white md:text-">{" "}Boost your apps🚀</span>
+            <span className="text-white md:text-"> Boost your apps🚀</span>
           </h3>
         </header>
-        
 
         {/**Main Header End */}
         {/**Main About**/}
@@ -239,15 +250,15 @@ function App() {
           </Reveal>
           <Line />
           <motion.div className="flex w-1/2 px-3 text-center pt-10 flex-col gap-3">
-            <AnimatedText
-              text="Do you want to learn how does this API work?"
-              className="md:text-2xl text-transparent bg-gradient-to-r from-white dm-sans to-100% bg-clip-text font-bold"
-            />
+            <span className="md:text-2xl text-transparent bg-gradient-to-r from-white dm-sans to-100% bg-clip-text font-bold">
+              Do you want to learn how does this API work?
+            </span>
             <AnimatedText
               text="Check out my github repository here"
               className="font-normal md:text-base text-white/40 inconsolata dm-sans antialised"
             />
             <RedirectButton
+              href="https://github.com/Mathbkj/AI"
               className="max-w-1/6"
               hasIcon={true}
               src="Github"

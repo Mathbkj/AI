@@ -56,7 +56,7 @@ export const Card: FC<CardProps> = ({
           {contentProps.content}
         </h2>
         {contentProps.btnText && (
-          <RedirectButton hasIcon src="Learn" text="Learn More" />
+          <RedirectButton href="https://github.com/Mathbkj/AI" hasIcon src="Learn" text="Learn More" />
         )}
       </div>
     </motion.div>

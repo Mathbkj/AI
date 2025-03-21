@@ -7,8 +7,8 @@ export const RedirectButton: FC<MotionButtonProps> = ({
   text,
   src,
   hasIcon,
-  onClick,
   className,
+  href
 }) => {
   const [isHover, setHovered] = useState<boolean>(false);
   const time = useTime();
@@ -26,10 +26,11 @@ export const RedirectButton: FC<MotionButtonProps> = ({
           isHover ? "bg-black" : "bg-white"
         } transition-all rounded-md flex px-3 py-2 gap-2 cursor-pointer justify-center dm-sans items-center ${className}`}
       >
-        <motion.button
-          onClick={onClick}
+        <a 
+          href={href}
+          rel="noreferrer"
+          target="_blank"
           className="cursor-pointer"
-          type="button"
         >
           <span
             className={`${
@@ -38,8 +39,7 @@ export const RedirectButton: FC<MotionButtonProps> = ({
           >
             {text}
           </span>
-        </motion.button>
-        {hasIcon && src === "Learn" ? (
+        </a>    {hasIcon && src === "Learn" ? (
           <div>
             <Icon size={15} color={isHover ? "white" : "black"} src="Learn" />
           </div>

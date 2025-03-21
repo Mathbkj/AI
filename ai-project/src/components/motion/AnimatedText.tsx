@@ -19,8 +19,8 @@ export const AnimatedText: FC<MotionTextProps> = ({ text, className }) => {
   const child: Variants = {
     hidden: {
       opacity: 0,
-      y: 20,
       filter:"blur(10px)",
+      y: 20,
       transition: {
         type: "spring",
         stiffness: 100,
